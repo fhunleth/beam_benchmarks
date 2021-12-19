@@ -23,6 +23,14 @@ defmodule BeamBenchmarks do
   @type(bencherl_version() :: :short | :intermediate, :long)
 
   @doc """
+  Return information about the device
+  """
+  @spec device_info() :: map()
+  def device_info() do
+    BeamBenchmarks.Info.all_info()
+  end
+
+  @doc """
   """
   @spec estone() :: {:comment, charlist()}
   def estone() do
