@@ -90,5 +90,5 @@ defmodule BeamBenchmarks.Info do
     Map.merge(map1, map2, fn _key, value1, value2 -> deep_merge(value1, value2) end)
   end
 
-  defp deep_merge(not_map1, not_map2), do: not_map2
+  defp deep_merge(_not_map1, not_map2), do: not_map2
 end
