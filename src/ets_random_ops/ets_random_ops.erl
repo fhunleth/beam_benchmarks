@@ -64,7 +64,7 @@ run([TableType,
                 KeyRangeSize,
                 Scenario,
                 WorkerHeapSize,
-                now())
+                erlang:timestamp())
       end,
       lists:seq(1, NrOfSchedulers)),
     receive_ready_msg_from_workers(NrOfSchedulers),

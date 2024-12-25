@@ -41,7 +41,7 @@ run([N,M|_], _, _) ->
 	ok.
 
 loop(Pid, 0, Out) -> Pid ! {self(), check_now(Out)};
-loop(Pid, N, Out) -> loop(Pid, N - 1, [now()|Out]).
+loop(Pid, N, Out) -> loop(Pid, N - 1, [erlang:timestamp()|Out]).
 
 check_now([_,_]) -> ok;
 check_now([_|Ts]) -> check_now(Ts).
