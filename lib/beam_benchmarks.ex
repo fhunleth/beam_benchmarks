@@ -23,7 +23,7 @@ defmodule BeamBenchmarks do
   @bencherl_tests [
     :bang,
     :ehb,
-    :ets_random_ops,
+    # :ets_random_ops,
     :orbit_int,
     :ran,
     :ets_test,
@@ -119,6 +119,18 @@ defmodule BeamBenchmarks do
   end
 
   @doc """
+  Run bencherl's ets_random_ops test
+
+  This benchmark creates an ETS table and spawns several readers and writers
+  that perform a certain number of reads (lookups) and writes (inserts),
+  respectively, to that table.
+  """
+  @spec ets_random_ops(bencherl_options()) :: []
+  def ets_random_ops(opts \\ []) do
+    run_bencherl_test(:ets_random_ops, opts)
+  end
+
+  @doc """
   Run bencherl's genstress test
 
   This is a generic server benchmark that spawns an echo server and a number of
@@ -190,6 +202,20 @@ defmodule BeamBenchmarks do
   @spec ran(bencherl_options()) :: []
   def ran(opts \\ []) do
     run_bencherl_test(:ran, opts)
+  end
+
+  @doc """
+  Run bencherl's moves test
+
+  Parallel benchmark program that solves the moves problem. A description of
+  the moves problem can be found in the ETS implementation report that can be
+  found here:
+
+  https://github.com/kjellwinblad/ets_impl_project
+  """
+  @spec moves(bencherl_options()) :: []
+  def moves(opts \\ []) do
+    run_bencherl_test(:moves, opts)
   end
 
   @doc """
