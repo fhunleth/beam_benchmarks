@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2024 Frank Hunleth
+#
+# SPDX-License-Identifier: Apache-2.0
+
 defmodule BeamBenchmarksTest do
   use ExUnit.Case
   doctest BeamBenchmarks

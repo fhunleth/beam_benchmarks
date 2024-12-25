@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2024 Frank Hunleth
+#
+# SPDX-License-Identifier: Apache-2.0
+
 defmodule BeamBenchmarks.Info do
   @moduledoc """
   Utilities for returning information about the device
