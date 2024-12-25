@@ -832,9 +832,9 @@ split_loop(_B, _, 0) ->
     ok;
 split_loop(B, Term, I) ->
     {X, Y} = split_binary(B, I),
-    size(X),
-    binary_to_list(Y, 1, 2),
-    binary_to_term(term_to_binary(Term)),
+    _ = size(X),
+    _ = binary_to_list(Y, 1, 2),
+    _ = binary_to_term(term_to_binary(Term)),
     split_loop(B, Term, I-1).
 
 
@@ -906,7 +906,7 @@ run_tab(Tab, Beg, End, J) ->
 int_arith(0) ->
     0;
 int_arith(I) ->
-    do_arith(I) +
+    _ = do_arith(I) +
     do_arith(I) +
     do_arith(I) +
     do_arith(I) +
@@ -919,7 +919,7 @@ int_arith(I) ->
     int_arith(I-1).
 
 do_arith(I) ->
-    do_arith2(I) -
+    _ = do_arith2(I) -
     do_arith2(I) -
     do_arith2(I) -
     do_arith2(I) -
@@ -941,7 +941,7 @@ do_arith2(I) ->
 float_arith(0) ->
     0;
 float_arith(I) ->
-    f_do_arith(I) +
+    _ = f_do_arith(I) +
     f_do_arith(I) +
     f_do_arith(I) +
     f_do_arith(I) +
