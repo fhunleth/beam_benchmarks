@@ -1,25 +1,44 @@
 # BeamBenchmarks
 
-This is a collection of benchmarks pull from other projects for ease of
-testing on embedded devices.
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/fhunleth/beam_benchmarks/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/fhunleth/beam_benchmarks/tree/main)
 
-Many of these were extracted from [bencherl](https://github.com/softlab-ntua/bencherl).
+This is a collection of benchmarks pull from other projects for ease of
+generating load and performing simplistic comparisons between embedded devices.
+
+Use the normal grain of salt when interpreting the results from benchmarks. Also
+be aware that almost all the official Nerves systems dynamically scale CPU
+frequency in response to load.
 
 Name   | Source   | Description
 ------ | -------- | -----------
-`bang` | bencherl |	A benchmark for many-to-one message passing that spawns one receiver and multiple senders that flood the receiver with messages.
-`big`  | bencherl | A benchmark that implements a many-to-many message passing scenario.
-`ehb`  | bencherl |	This is an implementation of *hackbench* in Erlang, a benchmark and stress test for Linux schedulers.
-`ets_test` | bencherl | This benchmark creates an ETS table and spawns several readers and writers that perform a certain number of reads (lookups) and writes (inserts), respectively, to that table.
-`genstress` | bencherl | This is a generic server benchmark that spawns an echo server and a number of clients.
-`mbrot` | bencherl | This benchmark extrapolates the coordinates of a 2-D complex plane that correspond to the pixels of a 2-D image of a specific resolution.
-`orbit_int` | bencherl | This benchmark operates on a distributed hash table, and follows a master/worker architecture.
-`parallel`  | bencherl | A benchmark for parallel execution that spawns a number of processes, each of which creates a list of $N$ timestamps and, after it checks that each element of the list is strictly greater than its previous one (as promised by the implementation of erlang:now/0), it sends the result to its parent.
-`pcmark` | bencherl | This benchmark is also about ETS operations. It creates five ETS tables, fills them with values, and then spawns a certain number of processes that read the contents of those tables and update them. As soon as one process finishes, a new process is spawned, until a certain total number of processes has been reached. The benchmark is parameterized by the number of initial processes and the total number of processes.
-`ran` | bencherl | Another benchmark for parallel execution that spawns a certain number of processes, each of which generates a list of ten thousand random integers, sorts it and sends its first half to the parent process. The benchmark receives the number of processes as a parameter.
-`serialmsg` | bencherl | A benchmark about message proxying through a dispatcher. The benchmark spawns a certain number of receivers, one dispatcher, and a certain number of generators. The dispatcher forwards the messages that it receives from generators to the appropriate receiver. Each generator sends a number of messages to a specific receiver.
-`timer_wheel` | bencherl | A timer management benchmark that spawns a certain number of processes that exchange *ping* and *pong* messages.
-`estone` | [Erlang/OTP](https://github.com/erlang-labs/otp/blob/master/erts/emulator/test/estone_SUITE.erl) | This is a suite of benchmarks that measure performance of various Erlang primitives.
+`bang` | [bencherl][bencherl] |	A benchmark for many-to-one message passing that spawns one receiver and multiple senders that flood the receiver with messages.
+`big`  | [bencherl][bencherl] | A benchmark that implements a many-to-many message passing scenario.
+`ehb`  | [bencherl][bencherl] |	This is an implementation of *hackbench* in Erlang, a benchmark and stress test for Linux schedulers.
+`ets_test` | [bencherl][bencherl] | This benchmark creates an ETS table and spawns several readers and writers that perform a certain number of reads (lookups) and writes (inserts), respectively, to that table.
+`genstress` | [bencherl][bencherl] | This is a generic server benchmark that spawns an echo server and a number of clients.
+`mbrot` | [bencherl][bencherl] | This benchmark extrapolates the coordinates of a 2-D complex plane that correspond to the pixels of a 2-D image of a specific resolution.
+`orbit_int` | [bencherl][bencherl] | This benchmark operates on a distributed hash table, and follows a master/worker architecture.
+`parallel`  | [bencherl][bencherl] | A benchmark for parallel execution that spawns a number of processes, each of which creates a list of $N$ timestamps and, after it checks that each element of the list is strictly greater than its previous one (as promised by the implementation of erlang:now/0), it sends the result to its parent.
+`pcmark` | [bencherl][bencherl] | This benchmark is also about ETS operations. It creates five ETS tables, fills them with values, and then spawns a certain number of processes that read the contents of those tables and update them. As soon as one process finishes, a new process is spawned, until a certain total number of processes has been reached. The benchmark is parameterized by the number of initial processes and the total number of processes.
+`ran` | [bencherl][bencherl] | Another benchmark for parallel execution that spawns a certain number of processes, each of which generates a list of ten thousand random integers, sorts it and sends its first half to the parent process. The benchmark receives the number of processes as a parameter.
+`serialmsg` | [bencherl][bencherl] | A benchmark about message proxying through a dispatcher. The benchmark spawns a certain number of receivers, one dispatcher, and a certain number of generators. The dispatcher forwards the messages that it receives from generators to the appropriate receiver. Each generator sends a number of messages to a specific receiver.
+`timer_wheel` | [bencherl][bencherl] | A timer management benchmark that spawns a certain number of processes that exchange *ping* and *pong* messages.
+`estone` | [estone_SUITE.erl][estone_SUITE.erl] | This is a suite of benchmarks that measure performance of various Erlang primitives.
+
+[bencherl]: https://github.com/softlab-ntua/bencherl
+[estone_SUITE.erl]: https://github.com/erlang/otp/blob/maint-27/erts/emulator/test/estone_SUITE.erl
+
+## Installation
+
+Adding `beam_benchmarks` to your list of dependencies in `mix.exs`:
+
+```elixir
+def deps do
+  [
+      {:beam_benchmarks, "~> 0.1", github: "fhunleth/beam_benchmarks"}
+  ]
+end
+```
 
 ## Sample run
 
@@ -58,4 +77,3 @@ Links                                2               18776        1     30
 ## Licensing
 
 Please see the individual source files for their licenses.
-
