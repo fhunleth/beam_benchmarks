@@ -1,5 +1,7 @@
 # BeamBenchmarks
 
+[![Hex version](https://img.shields.io/hexpm/v/beam_benchmarks.svg "Hex version")](https://hex.pm/packages/beam_benchmarks)
+[![API docs](https://img.shields.io/hexpm/v/beam_benchmarks.svg?label=hexdocs "API docs")](https://hexdocs.pm/beam_benchmarks/doc/BeamBenchmarks.html)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/fhunleth/beam_benchmarks/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/fhunleth/beam_benchmarks/tree/main)
 
 This is a collection of Erlang benchmarks copied from other projects for ease of
