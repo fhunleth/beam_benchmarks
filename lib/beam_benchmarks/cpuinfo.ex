@@ -3,9 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 defmodule BeamBenchmarks.Cpuinfo do
-  @moduledoc """
-  Return CPU information in /proc/cpuinfo
-  """
+  @moduledoc false
 
   @type info() :: %{num_cpu: non_neg_integer(), cpu: %{}}
 

@@ -19,6 +19,9 @@ defmodule NervesBench.MixProject do
       make_clean: ["mix_clean"],
       make_error_message: "",
       deps: deps(),
+      dialyzer: [
+        flags: [:missing_return, :extra_return, :unmatched_returns, :error_handling, :underspecs]
+      ],
       preferred_cli_env: %{
         docs: :docs,
         "hex.publish": :docs,
@@ -29,12 +32,14 @@ defmodule NervesBench.MixProject do
 
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: []
     ]
   end
 
   defp deps do
     [
+      {:credo, "~> 1.6", only: :dev, runtime: false},
+      {:dialyxir, "~> 1.2", only: :dev, runtime: false},
       {:elixir_make, "~> 0.6", runtime: false},
       {:ex_doc, "~> 0.26", only: :docs, runtime: false}
     ]
