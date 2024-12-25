@@ -44,10 +44,6 @@
 	 links/1,lproc/1,
 	 run_micro/3,p1/1,ppp/3,macro/2,micros/0]).
 
--ifndef(PGO).
--include_lib("common_test/include/ct_event.hrl").
--endif.
-
 %% EStone defines
 -define(TOTAL, (3000 * 1000 * 100)).   %% 300 secs
 -define(BIGPROCS, 2).
@@ -85,21 +81,12 @@ estone(Config) when is_list(Config) ->
 estone_bench(Config) ->
     DataDir = proplists:get_value(data_dir,Config),
     L = ?MODULE:macro(?MODULE:micros(),DataDir),
-    {Total, Stones} = sum_micros(L, 0, 0),
+    {_Total, Stones} = sum_micros(L, 0, 0),
     notify([[{title,"ESTONES"}, {estones, Stones}] | L]),
     L.
 
--ifndef(PGO).
-notify(Marks) ->
-    [ct_event:notify(
-       #event{name = benchmark_data,
-	      data = [{name,proplists:get_value(title, Mark)},
-		      {value,proplists:get_value(estones, Mark)}]})
-     || Mark <- Marks].
--else.
 notify(_) ->
     ok.
--endif.
 
 %% The benchmarks to run in order to guide PGO (profile guided optimisation)
 pgo() ->
