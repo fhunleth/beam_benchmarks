@@ -107,9 +107,9 @@ do_operations(Table,
                            _ProcentageNothing},
               RandomGenState) ->
     {OperationSelecRandomNum, NewRandomGenState1} =
-        random:uniform_s(100, RandomGenState),
+        rand:uniform_s(100, RandomGenState),
     {Key, NewRandomGenState2} =
-        random:uniform_s(KeyRangeSize, NewRandomGenState1),
+        rand:uniform_s(KeyRangeSize, NewRandomGenState1),
     case OperationSelecRandomNum of
         N when N =< PercentageInserts ->
             ets:insert(Table, {Key});

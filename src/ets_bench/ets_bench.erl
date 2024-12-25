@@ -97,7 +97,7 @@ mixed({T,[{A,X}|Xs]}) ->
 setup([[insert, Table, 1, Seed], _T, _K, _W, _R, _U, _C, _Procs, _S]) ->
 	{{continue, ignore}, [delete, Table, 0, Seed]};
 setup([[insert, Table, P, Seed], _T, K, W, _R, _U, _C, Procs | _]) ->
-	random:seed(Seed),
+	rand:seed(default, Seed),
 	WOps = round(math:pow(?BASE, W)),
 	KeyRange = round(math:pow(?BASE, K)),
 	Init = fun(Idx, Max) ->
@@ -116,7 +116,7 @@ setup([[insert, Table, P, Seed], _T, K, W, _R, _U, _C, Procs | _]) ->
 	{{continue, ignore}, [run, insert, Name, Workers, Table, P, NextSeed]};
 setup([[lookup, Table, P, Seed], _T, K, _W, R, UpdatePercentage, _C, Procs | _]) ->
 	%erlang:display([ets:info(Table, size), _T, [K, _W, R]]),
-	random:seed(Seed),
+	rand:seed(default, Seed),
 	ROps = round(math:pow(?BASE, R)),
 	KeyRange = round(math:pow(?BASE, K)),
 
@@ -164,7 +164,7 @@ setup([[delete, _Table, 1, _Seed], _T, _K, _W, _R, _U, _C, _Procs, _S]) ->
 	receive finished -> ok end,
 	{{done,ignore}, ok};
 setup([[delete, Table, P, Seed], _T, K, W, _R, _U, _C, Procs | _ ]) ->
-	random:seed(Seed),
+	rand:seed(default, Seed),
 	WOps = round(math:pow(?BASE, W)),
 	KeyRange = round(math:pow(?BASE, K)),
 	Init = fun(Idx, Max) ->
@@ -223,7 +223,7 @@ make_workers(Init, Work, [Seed|R], Cnt, Max, Agg) ->
 	make_workers(Init, Work, R, Cnt+1, Max, [Worker | Agg]).
 
 worker(Coordinator, Init, Work, Cnt, Max, Seed) ->
-	random:seed(Seed),
+	rand:seed(default, Seed),
 	InitState = Init(Cnt, Max),
 	Coordinator ! {self(), ready},
 	receive
@@ -250,12 +250,12 @@ wait_for_signal(Signal, [Worker|Workers]) ->
 make_seed(_) -> make_seed().
 make_seed() ->
 	{
-		random:uniform(?RAND_MAX),
-		random:uniform(?RAND_MAX),
-		random:uniform(?RAND_MAX)
+		rand:uniform(?RAND_MAX),
+		rand:uniform(?RAND_MAX),
+		rand:uniform(?RAND_MAX)
 	}.
 
 make_randoms(Amnt, Range) -> make_randoms(Amnt, Range, []).
 make_randoms(0, _, Acc) -> Acc;
 make_randoms(Amnt, Range, Acc) ->
-	make_randoms(Amnt-1, Range, [random:uniform(Range) | Acc]).
+	make_randoms(Amnt-1, Range, [rand:uniform(Range) | Acc]).

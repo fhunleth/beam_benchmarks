@@ -38,10 +38,10 @@ bench_args(Version, Conf) ->
 	[[N] || N <- [F * Cores]].
 
 mk_ranlist(0, _, Acc) -> Acc;
-mk_ranlist(N, M, Acc) -> mk_ranlist(N-1, M, [random:uniform(M) | Acc]). 
+mk_ranlist(N, M, Acc) -> mk_ranlist(N-1, M, [rand:uniform(M) | Acc]).
 
 mk_ranlist(Len, Max) ->
-	random:seed(Len, Max, Max * 2),
+	rand:seed(default, Len + 7919 * Max),
 	mk_ranlist(Len, Max, []).
 
 random(N) ->
