@@ -9,12 +9,25 @@ defmodule BeamBenchmarks.Info do
 
   alias BeamBenchmarks.Cpuinfo
 
+  @type t() :: %{
+          :elixir_version => String.t(),
+          :otp_version => String.t(),
+          :erts_version => String.t(),
+          :system_architecture => String.t(),
+          :schedulers => non_neg_integer(),
+          :schedulers_online => non_neg_integer(),
+          optional(:device_model) => String.t(),
+          optional(:kernel_version) => String.t(),
+          optional(:cpu) => map()
+        }
+
+  @spec all_info() :: t()
   def all_info() do
     [erts_info(), linux_info(), cpu_info()]
     |> Enum.reduce(%{}, &deep_merge/2)
   end
 
-  def erts_info() do
+  defp erts_info() do
     %{
       elixir_version: System.version(),
       otp_version: system_info(:otp_release),
@@ -25,16 +38,14 @@ defmodule BeamBenchmarks.Info do
     }
   end
 
-  @spec linux_info :: %{device_model: String.t(), kernel_version: String.t()}
-  def linux_info() do
+  defp linux_info() do
     %{
       kernel_version: safe_read("/proc/sys/kernel/osrelease"),
       device_model: safe_read("/proc/device-tree/model")
     }
   end
 
-  @spec cpu_info :: map()
-  def cpu_info() do
+  defp cpu_info() do
     deep_merge(Cpuinfo.read!(), all_cpu_frequency())
   end
 
