@@ -37,7 +37,7 @@ Adding `beam_benchmarks` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-      {:beam_benchmarks, "~> 0.1", github: "fhunleth/beam_benchmarks"}
+      {:beam_benchmarks, "~> 0.1"}
   ]
 end
 ```
