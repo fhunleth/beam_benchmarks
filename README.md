@@ -2,12 +2,12 @@
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/fhunleth/beam_benchmarks/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/fhunleth/beam_benchmarks/tree/main)
 
-This is a collection of benchmarks pull from other projects for ease of
-generating load and performing simplistic comparisons between embedded devices.
+This is a collection of Erlang benchmarks copied from other projects for ease of
+use. This project makes these benchmarks a hex dependency and helper function
+away. Some documentation is copied here for convenience, but please see
+the source projects for more complete information.
 
-Use the normal grain of salt when interpreting the results from benchmarks. Also
-be aware that almost all the official Nerves systems dynamically scale CPU
-frequency in response to load.
+Benchmarks include:
 
 Name   | Source   | Description
 ------ | -------- | -----------
