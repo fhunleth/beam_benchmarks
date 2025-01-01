@@ -19,6 +19,18 @@ Name   | Source   | Description
 `ets_test` | [bencherl][bencherl] | This benchmark creates an ETS table and spawns several readers and writers that perform a certain number of reads (lookups) and writes (inserts), respectively, to that table.
 `genstress` | [bencherl][bencherl] | This is a generic server benchmark that spawns an echo server and a number of clients.
 `mbrot` | [bencherl][bencherl] | This benchmark extrapolates the coordinates of a 2-D complex plane that correspond to the pixels of a 2-D image of a specific resolution.
+`nbody` | [benchmarksgame][benchmarksgame] | Model the orbits of Jovian planets using a simple symplectic-integrator
+`fannkuch_redux` | [benchmarksgame][benchmarksgame] | Flipping pancakes
+`spectral_norm` | [benchmarksgame][benchmarksgame] | The "Hundred-Dollar, Hundred-Digit Challenge Problem"
+`binary_trees` | [benchmarksgame][benchmarksgame] | Allocate and deallocate many many binary trees
+`chameneos_redux` | [benchmarksgame][benchmarksgame] | Symmetrical thread rendezvous requests
+`fasta` | [benchmarksgame][benchmarksgame] | Generate and write random DNA sequences
+`k_nucleotide` | [benchmarksgame][benchmarksgame] | Hashtable update and k-nucleotide strings
+`mandelbrot` | [benchmarksgame][benchmarksgame] | Generate Mandelbrot set portable bitmap file
+`pidigits` | [benchmarksgame][benchmarksgame] | Streaming arbitrary-precision arithmetic
+`regex_redux` | [benchmarksgame][benchmarksgame] | Match DNA 8-mers and substitute magic patterns
+`reverse_complement` | [benchmarksgame][benchmarksgame] | Read DNA sequences - write their reverse-complement
+`thread_ring` | [benchmarksgame][benchmarksgame] | Switch from thread to thread passing one token
 `orbit_int` | [bencherl][bencherl] | This benchmark operates on a distributed hash table, and follows a master/worker architecture.
 `parallel`  | [bencherl][bencherl] | A benchmark for parallel execution that spawns a number of processes, each of which creates a list of $N$ timestamps and, after it checks that each element of the list is strictly greater than its previous one (as promised by the implementation of erlang:now/0), it sends the result to its parent.
 `pcmark` | [bencherl][bencherl] | This benchmark is also about ETS operations. It creates five ETS tables, fills them with values, and then spawns a certain number of processes that read the contents of those tables and update them. As soon as one process finishes, a new process is spawned, until a certain total number of processes has been reached. The benchmark is parameterized by the number of initial processes and the total number of processes.
@@ -28,6 +40,7 @@ Name   | Source   | Description
 `estone` | [estone_SUITE.erl][estone_SUITE.erl] | This is a suite of benchmarks that measure performance of various Erlang primitives.
 
 [bencherl]: https://github.com/softlab-ntua/bencherl
+[benchmarksgame]: https://madnight.github.io/benchmarksgame/
 [estone_SUITE.erl]: https://github.com/erlang/otp/blob/maint-27/erts/emulator/test/estone_SUITE.erl
 
 ## Installation

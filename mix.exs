@@ -52,7 +52,7 @@ defmodule NervesBench.MixProject do
   defp package do
     [
       # See source files for licenses
-      licenses: ["ErlPL-1.1", "Apache-2.0"],
+      licenses: ["ErlPL-1.1", "Apache-2.0", "BSD-3-Clause"],
       links: %{"Github" => @source_url}
     ]
   end
