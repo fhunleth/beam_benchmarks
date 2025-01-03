@@ -57,6 +57,8 @@ end
 
 ## Sample run
 
+Here's an example run of the EStone benchmark from the Erlang/OTP source code.
+
 ```elixir
 iex> BeamBenchmarks.estone
 EStone test completed
@@ -87,6 +89,30 @@ Function calls                       12              62344        5     882
 Timers                               13              9553         2     2312
 Links                                2               18776        1     30
 {:comment, 'UNKNOWN MHz, 696638 ESTONES'}
+```
+
+All other benchmarks have a similar API that runs the one test and returns the
+result, timing, and other info in a `t:BeamBenchmarks.Results.t/0` struct. These
+run pretty quickly with default settings, but become much more interesting load
+generates when passed bigger arguments.
+
+Here's Benchmarks Game's `pidigits`:
+
+```elixir
+iex> BeamBenchmarks.BenchmarksGame.pidigits
+%BeamBenchmarks.Results{
+  name: :pidigits,
+  results: "3141592653\t:10\n5897932384\t:20\n6264338  \t:27\n",
+  options: [n: 27],
+  duration_us: 4462
+}
+iex> BeamBenchmarks.BenchmarksGame.pidigits(n: 10000)
+%BeamBenchmarks.Results{
+  name: :pidigits,
+  results: "3141592653" <> ...,
+  options: [n: 10000],
+  duration_us: 2463606
+}
 ```
 
 ## Licensing
