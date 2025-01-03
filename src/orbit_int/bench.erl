@@ -137,6 +137,6 @@ dist_seq(Generators, N, P, Workers) ->
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% auxiliary functions
 
-%% print size of generated orbit
+%% return size of generated orbit
 sz({_Orbit, [MainStats|_OtherStats]}) ->
-  io:write(lists:keyfind(size, 1, MainStats)), io:nl().
+  lists:keyfind(size, 1, MainStats).

@@ -16,11 +16,11 @@ bench_args_aux(Version) ->
     end.
 
 run([true,G,N,W|_], [], _) ->
-    io:format("~p~n", [bench:par(G,N,W)]);
+    bench:par(G,N,W);
 run([false,G,N,W|_], [], _) ->
-    io:format("~p~n", [bench:par_seq(G,N,W)]);
+    bench:par_seq(G,N,W);
 run([true,G,N,W|_], Slaves, _) ->
-    io:format("~p~n", [bench:dist(G,N,W,Slaves)]);
+    bench:dist(G,N,W,Slaves);
 run([false,G,N,W|_], Slaves, _) ->
-    io:format("~p~n", [bench:dist_seq(G,N,W,Slaves)]).
+    bench:dist_seq(G,N,W,Slaves).
 
