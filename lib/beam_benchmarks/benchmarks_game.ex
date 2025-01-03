@@ -11,13 +11,13 @@ defmodule BeamBenchmarks.BenchmarksGame do
     {name, _arity} = __CALLER__.function
 
     quote do
-      {duration_ms, result} = :timer.tc(fn -> unquote(block) end)
+      {duration_us, result} = :timer.tc(fn -> unquote(block) end)
 
       %Results{
         name: unquote(name),
         options: unquote(options),
         results: result,
-        duration_ms: duration_ms
+        duration_us: duration_us
       }
     end
   end

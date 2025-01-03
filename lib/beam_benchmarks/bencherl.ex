@@ -52,7 +52,7 @@ defmodule BeamBenchmarks.Bencherl do
 
     args = test.bench_args(opts[:version], bencherl_opts)
 
-    {duration_ms, result} =
+    {duration_us, result} =
       :timer.tc(fn ->
         for arg <- args do
           result = test.run(arg, [], nil)
@@ -64,7 +64,7 @@ defmodule BeamBenchmarks.Bencherl do
       name: test,
       options: opts,
       results: result,
-      duration_ms: duration_ms
+      duration_us: duration_us
     }
   end
 
