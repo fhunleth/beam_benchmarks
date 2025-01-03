@@ -1,14 +1,13 @@
 defmodule NervesBench.MixProject do
   use Mix.Project
 
-  @version "0.1.0"
+  @version "0.2.0"
   @source_url "https://github.com/fhunleth/beam_benchmarks"
 
   def project do
     [
       app: :beam_benchmarks,
       version: @version,
-      version: "0.1.0",
       elixir: "~> 1.17",
       start_permanent: Mix.env() == :prod,
       compilers: [:elixir_make | Mix.compilers()],
