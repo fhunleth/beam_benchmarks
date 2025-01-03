@@ -2,7 +2,7 @@
 
 -export([bench_args/2, run/3]).
 
--include("../benchutil/ets.hrl").
+-include("benchutil/ets.hrl").
 
 bench_args(Version, _) ->
     NrOfOperations =

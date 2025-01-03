@@ -2,7 +2,7 @@
 
 -export([moves/1, test/0]).
 
--include("../benchutil/ets.hrl").
+-include("benchutil/ets.hrl").
 
 -define(WHITE, 119).
 -define(EMPTY, 101).

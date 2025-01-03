@@ -28,7 +28,7 @@
 
 -export([bench_args/2, run/3]).
 
--include("../benchutil/ets.hrl").
+-include("benchutil/ets.hrl").
 
 bench_args(Version, Conf) ->
     {_,Cores} = lists:keyfind(number_of_cores, 1, Conf),
