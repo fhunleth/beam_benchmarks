@@ -1,9 +1,10 @@
 defmodule BeamBenchmarks.BenchmarksGameTest do
   use ExUnit.Case
-  doctest BeamBenchmarks.BenchmarksGame
+  alias BeamBenchmarks.BenchmarksGame
+  doctest BenchmarksGame
 
   test "nbody" do
-    result = BeamBenchmarks.nbody(n: 1000)
+    result = BenchmarksGame.nbody(n: 1000)
 
     assert result.name == :nbody
     assert result.options == [n: 1000]
@@ -14,7 +15,7 @@ defmodule BeamBenchmarks.BenchmarksGameTest do
   end
 
   test "fannkuch_redux" do
-    result = BeamBenchmarks.fannkuch_redux(n: 7)
+    result = BenchmarksGame.fannkuch_redux(n: 7)
 
     assert result.name == :fannkuch_redux
     assert result.options == [n: 7]
@@ -25,7 +26,7 @@ defmodule BeamBenchmarks.BenchmarksGameTest do
   end
 
   test "spectral_norm" do
-    result = BeamBenchmarks.spectral_norm(n: 100)
+    result = BenchmarksGame.spectral_norm(n: 100)
 
     assert result.name == :spectral_norm
     assert result.options == [n: 100]
@@ -34,7 +35,7 @@ defmodule BeamBenchmarks.BenchmarksGameTest do
   end
 
   test "binary_trees" do
-    result = BeamBenchmarks.binary_trees(n: 10)
+    result = BenchmarksGame.binary_trees(n: 10)
 
     assert result.name == :binary_trees
     assert result.options == [n: 10]
@@ -65,7 +66,7 @@ defmodule BeamBenchmarks.BenchmarksGameTest do
   end
 
   test "chameneos_redux" do
-    result = BeamBenchmarks.chameneos_redux(n: 600)
+    result = BenchmarksGame.chameneos_redux(n: 600)
 
     expected = """
     blue + blue -> blue
@@ -106,7 +107,7 @@ defmodule BeamBenchmarks.BenchmarksGameTest do
 
   test "fasta" do
     {:ok, io} = StringIO.open("")
-    result = BeamBenchmarks.fasta(n: 1000, io: io)
+    result = BenchmarksGame.fasta(n: 1000, io: io)
     {:ok, {_, actual}} = StringIO.close(io)
     expected = File.read!("test/fixtures/fasta-output.txt")
 
@@ -116,7 +117,7 @@ defmodule BeamBenchmarks.BenchmarksGameTest do
   end
 
   # test "k_nucleotide" do
-  #   result = BeamBenchmarks.k_nucleotide(n: 10)
+  #   result = BenchmarksGame.k_nucleotide(n: 10)
 
   #   assert result.name == :k_nucleotide
   #   assert result.options == [n: 10]
@@ -127,7 +128,7 @@ defmodule BeamBenchmarks.BenchmarksGameTest do
   test "mandelbrot", %{tmp_dir: tmp_dir} do
     actual_path = Path.join(tmp_dir, "actual.pbm")
     {:ok, io} = File.open(actual_path, [:write])
-    result = BeamBenchmarks.mandelbrot(n: 200, io: io)
+    result = BenchmarksGame.mandelbrot(n: 200, io: io)
     File.close(io)
 
     actual = File.read!(actual_path)
@@ -139,7 +140,7 @@ defmodule BeamBenchmarks.BenchmarksGameTest do
   end
 
   test "pidigits" do
-    result = BeamBenchmarks.pidigits(n: 27)
+    result = BenchmarksGame.pidigits(n: 27)
 
     assert result.name == :pidigits
     assert result.options == [n: 27]
@@ -148,7 +149,7 @@ defmodule BeamBenchmarks.BenchmarksGameTest do
   end
 
   # test "regex_redux" do
-  #   result = BeamBenchmarks.regex_redux(n: 10)
+  #   result = BenchmarksGame.regex_redux(n: 10)
 
   #   assert result.name == :regex_redux
   #   assert result.options == [n: 10]
@@ -157,7 +158,7 @@ defmodule BeamBenchmarks.BenchmarksGameTest do
 
   # Needs update to handle I/O
   # test "reverse_complement" do
-  #   result = BeamBenchmarks.reverse_complement(n: 10)
+  #   result = BenchmarksGame.reverse_complement(n: 10)
 
   #   assert result.name == :reverse_complement
   #   assert result.options == [n: 10]
@@ -165,7 +166,7 @@ defmodule BeamBenchmarks.BenchmarksGameTest do
   # end
 
   test "thread_ring" do
-    result = BeamBenchmarks.thread_ring(n: 1000)
+    result = BenchmarksGame.thread_ring(n: 1000)
 
     assert result.name == :thread_ring
     assert result.options == [n: 1000]

@@ -1,5 +1,9 @@
 defmodule BeamBenchmarks.Bencherl do
-  @moduledoc false
+  @moduledoc """
+  Bencherl benchmarks
+
+  See https://github.com/softlab-ntua/bencherl
+  """
 
   alias BeamBenchmarks.Results
 
